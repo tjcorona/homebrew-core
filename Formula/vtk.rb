@@ -1,13 +1,15 @@
 class Vtk < Formula
   desc "Toolkit for 3D computer graphics, image processing, and visualization"
   homepage "https://www.vtk.org/"
-  revision 10
+  url "https://www.vtk.org/files/release/9.0/VTK-9.0.1.tar.gz"
+  sha256 "1b39a5e191c282861e7af4101eaa8585969a2de05f5646c9199a161213a622c7"
   head "https://github.com/Kitware/VTK.git"
-
-  stable do
-    url "https://www.vtk.org/files/release/9.0/VTK-9.0.1.tar.gz"
-    sha256 "1b39a5e191c282861e7af4101eaa8585969a2de05f5646c9199a161213a622c7"
-  end
+  
+  bottle do
+    sha256 "37a13865cbf0c68db548b85f9577242b95a14c148db1c81548d82aac578fbf25" => :catalina
+    sha256 "4dee6ecbb7543786a57b9624df0b7bbe3bfe9686746a33d24c9233bfd7463d72" => :mojave
+    sha256 "d238bb0dbe69516d187cd31295d86c070ade51f4efae7c9bc41bdbe6f2e4d99b" => :high_sierra
+  end  
 
   depends_on "cmake" => :build
   depends_on "boost"
