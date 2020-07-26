@@ -4,7 +4,7 @@ class Vtk < Formula
   url "https://www.vtk.org/files/release/9.0/VTK-9.0.1.tar.gz"
   sha256 "1b39a5e191c282861e7af4101eaa8585969a2de05f5646c9199a161213a622c7"
   head "https://github.com/Kitware/VTK.git"
-  
+
   bottle do
     sha256 "37a13865cbf0c68db548b85f9577242b95a14c148db1c81548d82aac578fbf25" => :catalina
     sha256 "4dee6ecbb7543786a57b9624df0b7bbe3bfe9686746a33d24c9233bfd7463d72" => :mojave
@@ -24,6 +24,9 @@ class Vtk < Formula
   depends_on "qt"
 
   def install
+    # Do not record compiler path because it references the shim directory
+    inreplace "Common/Core/vtkConfigure.h.in", "@CMAKE_CXX_COMPILER@", "clang++"
+
     args = std_cmake_args + %W[
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
