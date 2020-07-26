@@ -20,7 +20,7 @@ class Gdcm < Formula
   depends_on "openjpeg"
   depends_on "openssl@1.1"
   depends_on "python@3.8"
-  depends_on "vtk"
+  depends_on "vtk@8.2"
 
   def install
     ENV.cxx11
